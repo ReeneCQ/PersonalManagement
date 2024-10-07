@@ -1,0 +1,16 @@
+﻿@model Personal
+
+<h2>Eliminar Personal</h2>
+
+<h4>¿Está seguro que desea eliminar el siguiente personal?</h4>
+<div>
+    <h5>@Model.Nombres @Model.Apellidos</h5>
+    <p>Documento: @Model.NumeroDocumento</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.NumeroDocumento)
+    <input type="submit" value="Eliminar" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+}

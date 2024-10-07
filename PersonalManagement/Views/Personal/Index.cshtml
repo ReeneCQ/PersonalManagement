@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Personal>
+
+<h2>Lista de Personal</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Documento</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>Cargo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NumeroDocumento</td>
+                <td>@item.Nombres</td>
+                <td>@item.Apellidos</td>
+                <td>@item.Edad</td>
+                <td>@item.Cargo?.DescripcionCargo</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.NumeroDocumento">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.NumeroDocumento">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Agregar Nuevo Personal</a>
